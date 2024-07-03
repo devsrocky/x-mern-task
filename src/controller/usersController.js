@@ -21,6 +21,9 @@ exports.login = async (req, res) => {
         if(userCount.length> 0){
             let payload = {exp: Math.floor(Date.now() / 1000) + (24*60*60), data: userCount[0]['email']}
             let token = jwt.sign(payload, 'loCkker%9875&69Raw')
+
+            res.cookie('token', token)
+
             res.status(200).json({status: 'success', token: token, data: userCount[0]})
         }else{
             res.status(200).json({status: 'Unauthorized', message: 'Enter correct email & password!'})
