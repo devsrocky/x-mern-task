@@ -14,16 +14,18 @@ const xss = require('xss-clean')
 const mongoose = require("mongoose")
 
 // SECURITY MIDDLEWARE IMPLEMENT
+
 app.use(cors({
     credentials:true,
     origin: "http://localhost:3000"
 }))
+
 app.use(helmet())
 app.use(hpp())
 app.use(mongoSanitize())
 app.use(xss())
 
-app.use(express.json({limit: '50mb'}))
+app.use(express.json({limit: '500mb'}))
 app.use(express.urlencoded({extended: true}))
 
 // BODY-PARSER IMPLEMENT
@@ -31,7 +33,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 // REQUEST RATE LIMIT
-const limiter = rateLimit({windowMs: 15*60*1000, max: 3000})
+const limiter = rateLimit({windowMs: 15*60*1000, max: 30000})
+
 app.use(limiter)
 
 // MONGOOSE DATABASE CONNECTION
