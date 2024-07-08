@@ -25,12 +25,10 @@ app.use(hpp())
 app.use(mongoSanitize())
 app.use(xss())
 
-app.use(express.json({limit: '500mb'}))
-app.use(express.urlencoded({extended: true}))
+app.use(express.json({limit: '50mb'}))
+app.use(express.urlencoded({limit:"50mb"}))
 
-// BODY-PARSER IMPLEMENT
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+
 
 // REQUEST RATE LIMIT
 const limiter = rateLimit({windowMs: 15*60*1000, max: 30000})
