@@ -5,9 +5,9 @@ exports.registration = async (req, res) => {
     try{
         let postBody = req.body;
         let user = await userModel.create(postBody)
-        res.status(201).json({status: 'success', data: user})
+        res.status(200).json({status: 'success', data: user})
     }catch(e){
-        res.status(400).json({status: 'failed', data: e.toString()})
+        res.status(200).json({status: 'failed', data: e.toString()})
     }
 }
 
