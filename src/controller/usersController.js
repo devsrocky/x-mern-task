@@ -46,3 +46,22 @@ exports.updateUser = async (req, res) => {
         res.status(401).json({status: 'failed', data: e.toString()})
     }
 }
+
+exports.profileDetails = async (req, res) => {
+    try{
+
+        let email = req.headers['email']
+        let MatchStage = {$match: {email:email}}
+        let Projection = {$project: {"password":0}}
+        let data = await userModel.aggregate([
+            MatchStage,
+            Projection
+        ])
+
+        res.status(200).json({status: 'success', data: data[0]})
+
+    }catch(e){
+        res.status(200).json({status: 'failed', data: e.toString()})
+    }
+}
+

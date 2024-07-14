@@ -12,6 +12,7 @@ const tasksController = require('../controller/tasksController')
 router.post('/registration', usersController.registration)
 router.post('/login', usersController.login)
 router.post('/updateUser', AuthVerify, usersController.updateUser)
+router.get('/profileDetails', AuthVerify, usersController.profileDetails)
 
 // TASKS || path specified
 router.post('/createTask', AuthVerify, tasksController.createTask)
@@ -23,4 +24,4 @@ router.get('/TaskStatusCount', AuthVerify, tasksController.TaskStatusCount)
 
 
 // MODULE EXPORT
-module.exports = router;
+module.exports = router; 
