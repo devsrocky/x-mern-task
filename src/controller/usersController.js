@@ -58,7 +58,7 @@ exports.profileDetails = async (req, res) => {
             Projection
         ])
 
-        res.status(200).json({status: 'success', data: data[0]})
+        res.status(200).json({status: 'success', data: data})
 
     }catch(e){
         res.status(200).json({status: 'failed', data: e.toString()})
