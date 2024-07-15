@@ -52,7 +52,7 @@ exports.profileDetails = async (req, res) => {
 
         let email = req.headers['email']
         let MatchStage = {$match: {email:email}}
-        let Projection = {$project: {"password":0}}
+        let Projection = {$project: {"_id":0}}
         let data = await userModel.aggregate([
             MatchStage,
             Projection
