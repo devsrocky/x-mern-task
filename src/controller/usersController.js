@@ -83,7 +83,7 @@ exports.sendOTP = async (req, res) => {
 
             res.status(200).json({status: 'success', message: 'We\'ve been sent email verification code.'})
         }else{
-            res.status(401).json({status: 'Unauthorized', message: 'User didn\'t find with this email.'})
+            res.status(200).json({status: 'Unauthorized', message: 'User didn\'t find with this email.'})
         }
 
 
